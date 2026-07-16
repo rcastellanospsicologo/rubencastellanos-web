@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubén Castellanos · Psicólogo y Psicoterapeuta · Barranquilla</title>
+<meta name="description" content="Psicólogo y psicoterapeuta con más de 20 años de experiencia en terapia individual y de pareja. Atención presencial en Barranquilla y virtual desde cualquier lugar.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+<!-- ACCESSIBLE SKIP LINK -->
+<a class="sr-only" href="#main-content">Ir al contenido principal</a>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="navbar" role="navigation" aria-label="Navegación principal">
+  <div class="navbar-inner">
+   <div class="nav-logo">
+    <span class="name" style="color: #FFFFFF !important;">Rubén Castellanos</span>
+    <span class="role" style="color: rgba(255, 255, 255, 0.7) !important;">Psicólogo · Psicoterapeuta</span>
+</div>
+    <div class="nav-links">
+      <a href="#services">Servicios</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#problems">Especialidades</a>
+      <a href="#modality">Atención</a>
+    </div>
+
+
+
+<a
+ href="https://agenda.rubencastellanos.co"
+  class="nav-cta-outline text-center flex items-center justify-center"
+  aria-label="Abrir portal clínico"
+>
+  Portal clínico
+</a>
+<button class="nav-cta" onclick="openBooking()" aria-label="Abrir agenda de citas">
+  Agendar cita
+</button>
+
+<button class="nav-hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+</div>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<main id="main-content">
+<section id="hero" aria-label="Bienvenida">
+  <!-- Atmospheric layers -->
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-light-pool" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <!-- Decorative geometric circles — Nirva signature -->
+  <div class="hero-circle-1" aria-hidden="true"></div>
+  <div class="hero-circle-2" aria-hidden="true"></div>
+  <div class="hero-circle-3" aria-hidden="true"></div>
+
+  <!-- Editorial oversized word bleeding off screen -->
+  <div class="hero-word-bottom" aria-hidden="true">Castellanos</div>
+
+  <!-- LEFT CONTENT COLUMN -->
+  <div class="hero-left">
+  <div class="hero-badge" role="status">
+    <span class="hero-badge-dot pulse" aria-hidden="true"></span>
+    Barranquilla · Presencial &amp; Virtual
+  </div>
+
+  <h1 style="color: #FFFFFF !important;">
+    <span class="sans-word" style="color: rgba(255, 255, 255, 0.8) !important;">Psicólogo &amp; Psicoterapeuta</span>
+    Acompañar<br>
+    es un <em style="color: #FFFFFF !important; font-style: italic;">arte</em>
+  </h1>
+
+  <p class="hero-sub" style="color: rgba(255, 255, 255, 0.7) !important;">
+    Más de 20 años ayudando a personas y parejas a recuperar su bienestar emocional. Un espacio seguro, humano y profundamente profesional.
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="openBooking()">
+      Agendar cita →
+    </button>
+    <a href="#services" class="btn-outline">
+      Ver servicios
+    </a>
+  </div>
+</div>
+
+  <!-- STATS BAR -->
+ <div class="hero-stats-bar" aria-label="Estadísticas">
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">+20</div>
+    <div class="hero-stat-lbl">Años de experiencia</div>
+  </div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">4</div>
+    <div class="hero-stat-lbl">Servicios</div>
+  </div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">2</div>
+    <div class="hero-stat-lbl">Modalidades</div>
+  </div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">100%</div>
+    <div class="hero-stat-lbl">Confidencial</div>
+  </div>
+</div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES SECTION
+     ============================================================ -->
+<section id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <p class="section-eyebrow">Servicios</p>
+        <h2 class="section-title" id="services-heading">
+          Un espacio para<br>cada necesidad
+        </h2>
+      </div>
+      <p class="section-sub">
+        Cada sesión está diseñada para acompañarte desde donde estás hacia donde quieres llegar, con herramientas probadas y un enfoque humano.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- CONSULTA INICIAL -->
+      <article class="service-card" data-number="01" tabindex="0" aria-label="Consulta Inicial, 60 minutos">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+          </svg>
+        </div>
+        <div class="service-duration">60 minutos</div>
+        <h3 class="service-name">Consulta Inicial</h3>
+        <p class="service-desc">
+          Primera aproximación al proceso terapéutico. Conocemos tu situación, tus necesidades y definimos juntos el camino a seguir. Un espacio sin juicios para comenzar.
+        </p>
+        <div class="service-footer">
+          <span class="service-modality">Presencial · Virtual</span>
+          <button class="btn-book" onclick="openBookingWithService('Consulta Inicial','60 min')">
+            Reservar →
+          </button>
+        </div>
+      </article>
+
+      <!-- TERAPIA INDIVIDUAL -->
+      <article class="service-card" data-number="02" tabindex="0" aria-label="Terapia Individual, 60 minutos">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <div class="service-duration">60 minutos</div>
+        <h3 class="service-name">Terapia Individual</h3>
+        <p class="service-desc">
+          Proceso terapéutico personalizado para trabajar ansiedad, depresión, autoestima, crecimiento personal y bienestar emocional duradero.
+        </p>
+        <div class="service-footer">
+          <span class="service-modality">Presencial · Virtual</span>
+          <button class="btn-book" onclick="openBookingWithService('Terapia Individual','60 min')">
+            Reservar →
+          </button>
+        </div>
+      </article>
+
+      <!-- TERAPIA DE PAREJA -->
+      <article class="service-card" data-number="03" tabindex="0" aria-label="Terapia de Pareja, 90 minutos">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="service-duration">90 minutos</div>
+        <h3 class="service-name">Terapia de Pareja</h3>
+        <p class="service-desc">
+          Espacio de comunicación y transformación para parejas que buscan mejorar su vínculo, resolver conflictos y fortalecer la relación desde la comprensión mutua.
+        </p>
+        <div class="service-footer">
+          <span class="service-modality">Presencial · Virtual</span>
+          <button class="btn-book" onclick="openBookingWithService('Terapia de Pareja','90 min')">
+            Reservar →
+          </button>
+        </div>
+      </article>
+
+      <!-- SEGUIMIENTO -->
+      <article class="service-card" data-number="04" tabindex="0" aria-label="Seguimiento Terapéutico, 45 minutos">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="service-duration">45 minutos</div>
+        <h3 class="service-name">Seguimiento Terapéutico</h3>
+        <p class="service-desc">
+          Sesiones de continuidad para pacientes en proceso activo. Revisamos avances, ajustamos estrategias y consolidamos los cambios alcanzados.
+        </p>
+        <div class="service-footer">
+          <span class="service-modality">Presencial · Virtual</span>
+          <button class="btn-book" onclick="openBookingWithService('Seguimiento Terapéutico','45 min')">
+            Reservar →
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT SECTION
+     ============================================================ -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-photo-wrap">
+        <div class="about-photo-card">
+          <div class="about-photo-bg">
+            <div class="about-initials" aria-hidden="true">RC</div>
+          </div>
+          <div class="about-photo-badge">
+            <div class="badge-name">Rubén Castellanos</div>
+            <div class="badge-role">Psicólogo · Psicoterapeuta · +20 años</div>
+          </div>
+        </div>
+        <div class="about-floating-tag" aria-hidden="true">
+          <div class="num">+20</div>
+          <div class="lbl">Años</div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-eyebrow">Sobre mí</p>
+        <h2 class="section-title" id="about-heading" style="font-size: clamp(24px, 3vw, 38px);">
+          Psicoterapia humana,<br>cercana y efectiva
+        </h2>
+        <p class="section-sub" style="max-width: 100%; margin-top: 16px;">
+          Creo en el poder transformador de un acompañamiento cercano y profesional. Durante más de 20 años he ayudado a personas y parejas a encontrar claridad, equilibrio y bienestar duradero, integrando herramientas clínicas con una escucha genuinamente humana.
+        </p>
+        <p class="section-sub" style="max-width: 100%; margin-top: 12px;">
+          He participado como conferencista, docente universitario y facilitador en procesos de desarrollo humano y fortalecimiento emocional.
+        </p>
+
+        <div class="about-credentials" role="list">
+          <div class="credential-item" role="listitem">
+            <div class="credential-check" aria-hidden="true">✓</div>
+            <span class="credential-text">Atención presencial en Barranquilla y virtual desde cualquier lugar del mundo</span>
+          </div>
+          <div class="credential-item" role="listitem">
+            <div class="credential-check" aria-hidden="true">✓</div>
+            <span class="credential-text">Más de 20 años de experiencia clínica en terapia individual y de pareja</span>
+          </div>
+          <div class="credential-item" role="listitem">
+            <div class="credential-check" aria-hidden="true">✓</div>
+            <span class="credential-text">Docente universitario, conferencista y facilitador de desarrollo humano</span>
+          </div>
+          <div class="credential-item" role="listitem">
+            <div class="credential-check" aria-hidden="true">✓</div>
+            <span class="credential-text">Espacio confidencial, profesional y humano en cada sesión</span>
+          </div>
+        </div>
+
+        <div class="tags-list" role="list" aria-label="Especialidades">
+          <span class="tag-pill" role="listitem">Psicoterapia</span>
+          <span class="tag-pill" role="listitem">Terapia Cognitivo Conductual</span>
+          <span class="tag-pill" role="listitem">Terapia de Pareja</span>
+          <span class="tag-pill" role="listitem">Coaching Emocional</span>
+          <span class="tag-pill" role="listitem">Gestión Humana</span>
+          <span class="tag-pill" role="listitem">Liderazgo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROBLEMS / SPECIALTIES SECTION
+     ============================================================ -->
+<section id="problems" aria-labelledby="problems-heading">
+  <div class="container">
+    <p class="section-eyebrow">Especialidades</p>
+    <h2 class="section-title" id="problems-heading">
+      Principales situaciones<br>que acompañamos
+    </h2>
+
+    <div class="problems-grid">
+
+      <div class="problem-category">
+        <div class="problem-cat-title">Ansiedad y estado de ánimo</div>
+        <ul class="problem-list">
+          <li>Ansiedad y crisis de pánico</li>
+          <li>Depresión y tristeza profunda</li>
+          <li>Estrés crónico y agotamiento</li>
+          <li>Angustia e irritabilidad</li>
+          <li>Insomnio y trastornos del sueño</li>
+        </ul>
+      </div>
+
+      <div class="problem-category">
+        <div class="problem-cat-title">Pareja y relaciones</div>
+        <ul class="problem-list">
+          <li>Conflictos de pareja</li>
+          <li>Separación y divorcio</li>
+          <li>Dependencia emocional</li>
+          <li>Celos y celopatía</li>
+          <li>Problemas de comunicación</li>
+          <li>Inestabilidad afectiva</li>
+        </ul>
+      </div>
+
+      <div class="problem-category">
+        <div class="problem-cat-title">Autoestima y crecimiento</div>
+        <ul class="problem-list">
+          <li>Baja autoestima</li>
+          <li>Falta de sentido de vida</li>
+          <li>Insatisfacción personal</li>
+          <li>Déficit de motivación</li>
+          <li>Problemas de apego</li>
+          <li>Timidez y bloqueos sociales</li>
+        </ul>
+      </div>
+
+      <div class="problem-category">
+        <div class="problem-cat-title">Adicciones y conductas</div>
+        <ul class="problem-list">
+          <li>Consumo de sustancias</li>
+          <li>Alcoholismo</li>
+          <li>Ludopatía</li>
+          <li>Adicción a medicamentos</li>
+          <li>Conductas compulsivas</li>
+        </ul>
+      </div>
+
+      <div class="problem-category" style="grid-column: span 2;">
+        <div class="problem-cat-title">Trastornos emocionales y psicológicos</div>
+        <ul class="problem-list" style="columns: 2; gap: 32px;">
+          <li>Trastorno obsesivo-compulsivo (TOC)</li>
+          <li>Trastorno bipolar</li>
+          <li>Estrés postraumático (TEPT)</li>
+          <li>Trastornos de personalidad</li>
+          <li>Trastornos alimenticios</li>
+          <li>Duelo y duelo patológico</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MODALITY SECTION
+     ============================================================ -->
+<section id="modality" aria-labelledby="modality-heading">
+  <div class="container">
+    <p class="section-eyebrow">Modalidad de atención</p>
+    <h2 class="section-title" id="modality-heading">
+      Como prefieras,<br>donde estés
+    </h2>
+
+    <div class="modality-cards">
+
+      <div class="modality-card presencial">
+        <div class="modality-icon" aria-hidden="true">🧠</div>
+        <h3 class="modality-title">Atención Presencial</h3>
+        <p class="modality-desc">
+          Un espacio físico pensado para que te sientas cómodo, seguro y en confianza. El encuentro presencial permite una conexión más profunda y un acompañamiento más cercano.
+        </p>
+        <p class="modality-detail">
+          <strong>Centro Médico Gemelli</strong><br>
+          Calle 80 #47-43 Piso 2, Consultorio 4A<br>
+          Barranquilla, Colombia
+        </p>
+      </div>
+
+      <div class="modality-card virtual">
+        <div class="modality-icon" aria-hidden="true">💻</div>
+        <h3 class="modality-title">Consultas Virtuales</h3>
+        <p class="modality-desc">
+          Recibe la misma calidad de acompañamiento desde la comodidad de tu hogar o desde cualquier lugar. Misma confidencialidad, misma presencia, sin límites geográficos.
+        </p>
+        <p class="modality-detail">
+          <strong>Disponible para todo el mundo</strong><br>
+          Videollamada segura y confidencial<br>
+          Horarios flexibles adaptados a tu zona horaria
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA SECTION
+     ============================================================ -->
+<section id="cta-section" aria-labelledby="cta-heading">
+  <div class="cta-content">
+    <div class="cta-eyebrow">Primer paso</div>
+    <h2 id="cta-heading">
+      Da el primer paso<br>hacia tu <em>bienestar</em>
+    </h2>
+    <p>
+      Si estás atravesando ansiedad, conflictos de pareja, estrés o una situación emocional difícil, puedo acompañarte en este proceso.
+    </p>
+    <div class="cta-actions">
+      <button class="btn-primary" style="font-size: 15px; padding: 16px 40px;" onclick="openBooking()">
+        Agendar cita ahora →
+      </button>
+      <a href="https://wa.me/573148574637?text=Hola%20Rub%C3%A9n%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita." class="btn-wa" target="_blank" rel="noopener" style="max-width: 340px; text-decoration: none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp · 314 857 4637
+      </a>
+    </div>
+    <div class="cta-address">
+      Centro Médico Gemelli · Calle 80 #47-43 Piso 2, Cons. 4A · Barranquilla
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Rubén Castellanos · <span>Psicólogo</span></div>
+      <div class="footer-copy">© 2026 · Todos los derechos reservados</div>
+      <div class="footer-links">
+<a href="https://agenda.rubencastellanos.co">Portal clínico</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#" onclick="openAdmin(); return false;">Admin ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

@@ -460,38 +460,399 @@
     </div>
   </div>
 </footer>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubén Castellanos · Psicólogo y Psicoterapeuta · Barranquilla</title>
-    <meta name="description" content="Psicólogo y psicoterapeuta con más de 20 años de experiencia...">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-</head>
-<body>
-    <nav id="navbar">...</nav>
-    <main id="main-content">
-        <!-- Secciones de la página -->
-    </main>
-    <footer id="footer">...</footer>
+<div id="booking-overlay" role="dialog" aria-modal="true">
+  <div class="booking-modal"><div id="booking-overlay" role="dialog" aria-modal="true">
+  <div class="booking-modal">
 
-    <!-- Modales y Overlays -->
-    <div id="booking-overlay">...</div>
-    <div id="portal-overlay">...</div>
-    <div id="admin-overlay">...</div>
-</body>
-</html>
+    <button class="booking-close" onclick="closeBooking()">×</button>
 
-</body>
-</html>
+    <h2>Agendar cita</h2>
 
-<script>state
-openBooking()
-closeBooking()
-goToStep()
-selectBookingService()
-renderCalendar()
-selectDay()
+    <div id="bs1" class="booking-step active">
+
+      <h3>Selecciona el tipo de consulta</h3>
+
+      <button class="booking-service-opt" onclick="selectBookingService(this,'Consulta Inicial','60 min')">
+        Consulta Inicial · 60 minutos
+      </button>
+
+      <button class="booking-service-opt" onclick="selectBookingService(this,'Terapia Individual','60 min')">
+        Terapia Individual · 60 minutos
+      </button>
+
+      <button class="booking-service-opt" onclick="selectBookingService(this,'Terapia de Pareja','90 min')">
+        Terapia de Pareja · 90 minutos
+      </button>
+
+      <button id="btn-step1" disabled onclick="goToStep(2)">
+        Continuar
+      </button>
+
+    </div>
+
+
+  </div>
+</div>
+
+<script>
+
+<button class="booking-close" onclick="closeBooking()">×</button>
+
+<h2>Agendar cita</h2>
+
+<div id="bs1" class="booking-step active">
+
+<h3>Selecciona el tipo de consulta</h3>
+
+<button class="booking-service-opt" onclick="selectBookingService(this,'Consulta Inicial','60 min')">
+Consulta Inicial · 60 minutos
+</button>
+
+<button class="booking-service-opt" onclick="selectBookingService(this,'Terapia Individual','60 min')">
+Terapia Individual · 60 minutos
+</button>
+
+<button class="booking-service-opt" onclick="selectBookingService(this,'Terapia de Pareja','90 min')">
+Terapia de Pareja · 90 minutos
+</button>
+
+<button id="btn-step1" disabled onclick="goToStep(2)">
+Continuar
+</button>
+
+</div>
+
+
+<div id="bs2" class="booking-step">
+
+<h3>Selecciona fecha</h3>
+
+<div class="calendar-header">
+<button onclick="changeMonth(-1)">‹</button>
+
+<span id="cal-month-label"></span>
+
+<button onclick="changeMonth(1)">›</button>
+</div>
+
+<div id="cal-days-grid"></div>
+
+
+<h3>Horario disponible</h3>
+
+<div id="slots-list"></div>
+
+
+<button id="btn-step2" disabled onclick="goToStep(3)">
+Continuar
+</button>
+
+
+</div>
+
+
+<div id="bs3" class="booking-step">
+
+<h3>Confirmar cita</h3>
+
+<p>Servicio:
+<strong id="cv-service">—</strong>
+</p>
+
+<p>Modalidad:
+<strong id="cv-mod">—</strong>
+</p>
+
+<p>Fecha:
+<strong id="cv-date">—</strong>
+</p>
+
+<p>Hora:
+<strong id="cv-time">—</strong>
+</p>
+
+
+<button onclick="goToStep(4)">
+Confirmar
+</button>
+
+</div>
+
+
+<div id="bs4" class="booking-step">
+
+<h3>¡Cita reservada!</h3>
+
+<p>Recibirás la confirmación por correo.</p>
+
+<button onclick="closeBooking()">
+Cerrar
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+<script>
+
+var monthNames = [
+'Enero','Febrero','Marzo','Abril','Mayo','Junio',
+'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+];
+
+var availableSlots = [
+'8:00 AM',
+'9:00 AM',
+'10:00 AM',
+'11:00 AM',
+'2:00 PM',
+'3:00 PM',
+'4:00 PM',
+'5:00 PM'
+];
+
+var availableDays = [1,2,3,4,5,6];
+
+
+var state = {
+ service:'',
+ dur:'',
+ mod:'Presencial · Barranquilla',
+ day:'',
+ dayLabel:'',
+ time:'',
+ month:new Date().getMonth(),
+ year:new Date().getFullYear()
+};
+
+
+function openBooking(){
+ document.getElementById('booking-overlay').classList.add('open');
+ document.body.style.overflow='hidden';
+ renderCalendar();
+}
+
+
+function closeBooking(){
+ document.getElementById('booking-overlay').classList.remove('open');
+ document.body.style.overflow='';
+}
+
+
+function selectMod(el){
+ document.querySelectorAll('.modal-mod-opt')
+ .forEach(function(e){e.classList.remove('selected')});
+
+ el.classList.add('selected');
+
+ state.mod = el.textContent
+ .trim()
+ .replace(/🧠|💻/g,'')
+ .trim();
+
+ updateConfirmCard();
+}
+
+
+function selectBookingService(el,svc,dur){
+
+ document.querySelectorAll('.booking-service-opt')
+ .forEach(function(e){
+   e.classList.remove('selected');
+ });
+
+ el.classList.add('selected');
+
+ state.service=svc;
+ state.dur=dur;
+
+ document.getElementById('btn-step1').disabled=false;
+
+ updateConfirmCard();
+}
+
+
+function goToStep(n){
+
+ for(var i=1;i<=4;i++){
+
+ let screen=document.getElementById('bs'+i);
+ if(screen) screen.classList.remove('active');
+
+ let sc=document.getElementById('sc'+i);
+
+ if(sc){
+ sc.classList.remove('done','active','pending');
+
+ if(i<n) sc.classList.add('done');
+ else if(i===n) sc.classList.add('active');
+ else sc.classList.add('pending');
+ }
+
+ }
+
+ document.getElementById('bs'+n).classList.add('active');
+
+ renderCalendar();
+
+}
+
+
+function renderCalendar(){
+
+var grid=document.getElementById('cal-days-grid');
+
+if(!grid)return;
+
+document.getElementById('cal-month-label').textContent =
+monthNames[state.month]+' '+state.year;
+
+
+grid.innerHTML='';
+
+
+var days=new Date(
+state.year,
+state.month+1,
+0
+).getDate();
+
+
+for(let d=1;d<=days;d++){
+
+let date=new Date(state.year,state.month,d);
+
+let cell=document.createElement('div');
+
+cell.className='cal-day';
+
+cell.textContent=d;
+
+
+cell.onclick=function(){
+
+selectDay(this,d,date);
+
+};
+
+
+grid.appendChild(cell);
+
+}
+
+}
+
+
+
+function changeMonth(dir){
+
+state.month+=dir;
+
+if(state.month>11){
+state.month=0;
+state.year++;
+}
+
+if(state.month<0){
+state.month=11;
+state.year--;
+}
+
+renderCalendar();
+
+}
+
+
+function selectDay(el,day,date){
+
+document.querySelectorAll('.cal-day')
+.forEach(function(c){
+c.classList.remove('selected');
+});
+
+
+el.classList.add('selected');
+
+state.day=day;
+
+state.dayLabel=
+day+' '+monthNames[state.month]+' '+state.year;
+
+
+renderSlots();
+
+}
+
+
+function renderSlots(){
+
+var container=document.getElementById('slots-list');
+
+container.innerHTML='';
+
+
+availableSlots.forEach(function(slot){
+
+let btn=document.createElement('button');
+
+btn.className='time-slot-btn';
+
+btn.textContent=slot;
+
+btn.onclick=function(){
+
+selectTimeSlot(this,slot);
+
+};
+
+container.appendChild(btn);
+
+});
+
+}
+
+
+
+function selectTimeSlot(el,t){
+
+document.querySelectorAll('.time-slot-btn')
+.forEach(function(b){
+b.classList.remove('selected');
+});
+
+el.classList.add('selected');
+
+state.time=t;
+
+document.getElementById('btn-step2').disabled=false;
+
+updateConfirmCard();
+
+}
+
+
+
+function updateConfirmCard(){
+
+let s=document.getElementById('cv-service');
+if(s)s.textContent=state.service||'—';
+
+let m=document.getElementById('cv-mod');
+if(m)m.textContent=state.mod||'—';
+
+let d=document.getElementById('cv-date');
+if(d)d.textContent=state.dayLabel||'—';
+
+let t=document.getElementById('cv-time');
+if(t)t.textContent=state.time||'—';
+
+}
+
+
 </script>
+
+</body>
+</html>

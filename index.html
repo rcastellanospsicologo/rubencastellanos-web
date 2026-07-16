@@ -455,180 +455,185 @@
 <a href="https://agenda.rubencastellanos.co">Portal clínico</a>
         <a href="#">Política de privacidad</a>
         <a href="#">Términos</a>
-        <a href="#" onclick="openAdmin(); return false;">Admin ↗</a>
       </div>
     </div>
   </div>
 </footer>
 
-<div id="booking-overlay" role="dialog" aria-modal="true">
+<div id="booking-overlay" role="dialog" aria-modal="true" aria-label="Agendar cita">
+  <div class="booking-modal">
+    <button class="modal-close" onclick="closeBooking()" aria-label="Cerrar">×</button>
 
-<div class="booking-modal">
-
-<button class="booking-close" onclick="closeBooking()">×</button>
-
-<h2>Agendar cita</h2>
-
-<div id="bs1" class="booking-step active">
-
-<h3>Selecciona el tipo de consulta</h3>
-
-<button class="booking-service-opt" onclick="selectBookingService(this,'Consulta Inicial','60 min')">
-Consulta Inicial · 60 minutos
-</button>
-
-<button class="booking-service-opt" onclick="selectBookingService(this,'Terapia Individual','60 min')">
-Terapia Individual · 60 minutos
-</button>
-
-<button class="booking-service-opt" onclick="selectBookingService(this,'Terapia de Pareja','90 min')">
-Terapia de Pareja · 90 minutos
-</button>
-
-<button id="btn-step1" disabled onclick="goToStep(2)">
-Continuar
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<script>ass="booking-modal">
-
-    <button class="booking-close" onclick="closeBooking()">×</button>
-
-    <h2>Agendar cita</h2>
-
-    <div id="bs1" class="booking-step active">
-
-      <h3>Selecciona el tipo de consulta</h3>
-
-      <button class="booking-service-opt" onclick="selectBookingService(this,'Consulta Inicial','60 min')">
-        Consulta Inicial · 60 minutos
-      </button>
-
-      <button class="booking-service-opt" onclick="selectBookingService(this,'Terapia Individual','60 min')">
-        Terapia Individual · 60 minutos
-      </button>
-
-      <button class="booking-service-opt" onclick="selectBookingService(this,'Terapia de Pareja','90 min')">
-        Terapia de Pareja · 90 minutos
-      </button>
-
-      <button id="btn-step1" disabled onclick="goToStep(2)">
-        Continuar
-      </button>
-
+    <!-- STEP INDICATOR -->
+    <div class="step-indicator" role="list" aria-label="Pasos del proceso">
+      <div class="step-item-wrap" role="listitem">
+        <div class="step-circle active" id="sc1">1</div>
+        <div class="step-label">Servicio</div>
+      </div>
+      <div class="step-connector" id="sl1" aria-hidden="true"></div>
+      <div class="step-item-wrap" role="listitem">
+        <div class="step-circle pending" id="sc2">2</div>
+        <div class="step-label">Fecha</div>
+      </div>
+      <div class="step-connector" id="sl2" aria-hidden="true"></div>
+      <div class="step-item-wrap" role="listitem">
+        <div class="step-circle pending" id="sc3">3</div>
+        <div class="step-label">Confirmar</div>
+      </div>
+      <div class="step-connector" id="sl3" aria-hidden="true"></div>
+      <div class="step-item-wrap" role="listitem">
+        <div class="step-circle pending" id="sc4">✓</div>
+        <div class="step-label">Listo</div>
+      </div>
     </div>
 
+    <!-- STEP 1: SELECT SERVICE -->
+    <div class="booking-screen active" id="bs1">
+      <div class="booking-screen-header">
+        <p class="eyebrow">Paso 1 de 3</p>
+        <h2>¿Qué tipo de sesión necesitas?</h2>
+        <p>Cada espacio está diseñado para acompañarte de manera diferente.</p>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <div class="form-label">Modalidad de atención</div>
+        <div class="modality-toggle">
+          <button class="modal-mod-opt selected" onclick="selectMod(this)" type="button">🧠 Presencial · Barranquilla</button>
+          <button class="modal-mod-opt" onclick="selectMod(this)" type="button">💻 Virtual · Desde cualquier lugar</button>
+        </div>
+      </div>
+
+      <div class="booking-services" role="radiogroup" aria-label="Seleccionar servicio">
+        <div class="booking-service-opt" onclick="selectBookingService(this,'Consulta Inicial','60 min')" tabindex="0" role="radio" aria-checked="false">
+          <div class="dur">60 min</div>
+          <div class="nm">Consulta Inicial</div>
+          <div class="dsc">Primera sesión de evaluación y plan terapéutico.</div>
+          <div class="sel-dot" aria-hidden="true"></div>
+        </div>
+        <div class="booking-service-opt" onclick="selectBookingService(this,'Terapia Individual','60 min')" tabindex="0" role="radio" aria-checked="false">
+          <div class="dur">60 min</div>
+          <div class="nm">Terapia Individual</div>
+          <div class="dsc">Proceso personalizado. Ansiedad, autoestima, bienestar.</div>
+          <div class="sel-dot" aria-hidden="true"></div>
+        </div>
+        <div class="booking-service-opt" onclick="selectBookingService(this,'Terapia de Pareja','90 min')" tabindex="0" role="radio" aria-checked="false">
+          <div class="dur">90 min</div>
+          <div class="nm">Terapia de Pareja</div>
+          <div class="dsc">Comunicación, conflictos y fortalecimiento del vínculo.</div>
+          <div class="sel-dot" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="booking-actions">
+        <button class="btn-next-step" id="btn-step1" disabled onclick="goToStep(2)">
+          Elegir fecha y hora →
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: CALENDAR + SLOTS -->
+    <div class="booking-screen" id="bs2">
+      <div class="booking-screen-header">
+        <p class="eyebrow">Paso 2 de 3</p>
+        <h2>Escoge fecha y horario</h2>
+        <p>Disponibilidad actualizada en tiempo real.</p>
+      </div>
+
+      <div class="calendar-slots-layout">
+        <div class="cal-wrap">
+          <div class="cal-header">
+            <button class="cal-nav-btn" onclick="changeMonth(-1)" aria-label="Mes anterior">‹</button>
+            <span class="cal-month-label" id="cal-month-label"></span>
+            <button class="cal-nav-btn" onclick="changeMonth(1)" aria-label="Mes siguiente">›</button>
+          </div>
+          <div class="cal-grid" role="grid" aria-label="Calendario">
+            <div class="cal-day-hdr" aria-label="Lunes">Lun</div>
+            <div class="cal-day-hdr" aria-label="Martes">Mar</div>
+            <div class="cal-day-hdr" aria-label="Miércoles">Mié</div>
+            <div class="cal-day-hdr" aria-label="Jueves">Jue</div>
+            <div class="cal-day-hdr" aria-label="Viernes">Vie</div>
+            <div class="cal-day-hdr" aria-label="Sábado">Sáb</div>
+            <div class="cal-day-hdr" aria-label="Domingo">Dom</div>
+          </div>
+          <div class="cal-grid" id="cal-days-grid" role="grid"></div>
+        </div>
+
+        <div class="slots-panel">
+          <div class="slots-title" id="slots-title">Selecciona un día</div>
+          <div class="slots-list" id="slots-list">
+            <p style="font-size:13px; color: var(--dim-3); text-align:center; margin-top:32px; line-height:1.7;">
+              Elige una fecha disponible
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-actions">
+        <button class="btn-next-step" id="btn-step2" disabled onclick="goToStep(3)">
+          Continuar →
+        </button>
+        <button class="btn-prev-step" onclick="goToStep(1)">← Volver</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: CONFIRM -->
+    <div class="booking-screen" id="bs3">
+      <div class="booking-screen-header">
+        <p class="eyebrow">Paso 3 de 3</p>
+        <h2>Confirma tu cita</h2>
+        <p>Revisa los detalles antes de confirmar.</p>
+      </div>
+
+      <div class="confirm-card" role="summary" aria-label="Resumen de tu cita">
+        <div class="confirm-row">
+          <span class="confirm-lbl">Servicio</span>
+          <span class="confirm-val" id="cv-service">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-lbl">Modalidad</span>
+          <span class="confirm-val" id="cv-mod">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-lbl">Fecha</span>
+          <span class="confirm-val" id="cv-date">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-lbl">Hora</span>
+          <span class="confirm-val" id="cv-time">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-lbl">Duración</span>
+          <span class="confirm-val" id="cv-dur">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-lbl">Ubicación</span>
+          <span class="confirm-val" id="cv-loc">—</span>
+        </div>
+      </div>
+
+      <div class="booking-actions">
+        <button class="btn-next-step" onclick="goToStep(4)">Confirmar cita →</button>
+        <button class="btn-prev-step" onclick="goToStep(2)">← Volver al calendario</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: DONE -->
+    <div class="booking-screen" id="bs4">
+      <div class="confirm-header">
+        <div class="confirm-icon" aria-hidden="true">✓</div>
+        <h2 class="confirm-title">¡Cita reservada!</h2>
+        <p class="confirm-subtitle">Recibirás un recordatorio antes de tu sesión.<br>También puedes escribirme directamente por WhatsApp para confirmar.</p>
+      </div>
+
+      <button class="btn-wa" id="btn-wa-confirm" aria-label="Escribir a Rubén por WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        Escribir a Rubén · WhatsApp
+      </button>
+      <button class="btn-prev-step" onclick="closeBooking()">Cerrar</button>
+    </div>
 
   </div>
 </div>
-
-<script>
-
-<button class="booking-close" onclick="closeBooking()">×</button>
-
-<h2>Agendar cita</h2>
-
-<div id="bs1" class="booking-step active">
-
-<h3>Selecciona el tipo de consulta</h3>
-
-<button class="booking-service-opt" onclick="selectBookingService(this,'Consulta Inicial','60 min')">
-Consulta Inicial · 60 minutos
-</button>
-
-<button class="booking-service-opt" onclick="selectBookingService(this,'Terapia Individual','60 min')">
-Terapia Individual · 60 minutos
-</button>
-
-<button class="booking-service-opt" onclick="selectBookingService(this,'Terapia de Pareja','90 min')">
-Terapia de Pareja · 90 minutos
-</button>
-
-<button id="btn-step1" disabled onclick="goToStep(2)">
-Continuar
-</button>
-
-</div>
-
-
-<div id="bs2" class="booking-step">
-
-<h3>Selecciona fecha</h3>
-
-<div class="calendar-header">
-<button onclick="changeMonth(-1)">‹</button>
-
-<span id="cal-month-label"></span>
-
-<button onclick="changeMonth(1)">›</button>
-</div>
-
-<div id="cal-days-grid"></div>
-
-
-<h3>Horario disponible</h3>
-
-<div id="slots-list"></div>
-
-
-<button id="btn-step2" disabled onclick="goToStep(3)">
-Continuar
-</button>
-
-
-</div>
-
-
-<div id="bs3" class="booking-step">
-
-<h3>Confirmar cita</h3>
-
-<p>Servicio:
-<strong id="cv-service">—</strong>
-</p>
-
-<p>Modalidad:
-<strong id="cv-mod">—</strong>
-</p>
-
-<p>Fecha:
-<strong id="cv-date">—</strong>
-</p>
-
-<p>Hora:
-<strong id="cv-time">—</strong>
-</p>
-
-
-<button onclick="goToStep(4)">
-Confirmar
-</button>
-
-</div>
-
-
-<div id="bs4" class="booking-step">
-
-<h3>¡Cita reservada!</h3>
-
-<p>Recibirás la confirmación por correo.</p>
-
-<button onclick="closeBooking()">
-Cerrar
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
 <script>
 
 var monthNames = [
@@ -669,6 +674,20 @@ function openBooking(){
 }
 
 
+function openBookingWithService(svc,dur){
+ openBooking();
+ setTimeout(function(){
+   var opts=document.querySelectorAll('.booking-service-opt');
+   opts.forEach(function(o){
+     var nm=o.querySelector('.nm');
+     if(nm && nm.textContent.trim()===svc){
+       selectBookingService(o,svc,dur);
+     }
+   });
+ },100);
+}
+
+
 function closeBooking(){
  document.getElementById('booking-overlay').classList.remove('open');
  document.body.style.overflow='';
@@ -695,9 +714,11 @@ function selectBookingService(el,svc,dur){
  document.querySelectorAll('.booking-service-opt')
  .forEach(function(e){
    e.classList.remove('selected');
+   e.setAttribute('aria-checked','false');
  });
 
  el.classList.add('selected');
+ el.setAttribute('aria-checked','true');
 
  state.service=svc;
  state.dur=dur;
@@ -727,6 +748,11 @@ function goToStep(n){
 
  }
 
+ for(var j=1;j<=3;j++){
+ let sl=document.getElementById('sl'+j);
+ if(sl) sl.classList.toggle('done', j<n);
+ }
+
  document.getElementById('bs'+n).classList.add('active');
 
  renderCalendar();
@@ -753,6 +779,14 @@ state.month+1,
 0
 ).getDate();
 
+var firstDay=new Date(state.year,state.month,1).getDay();
+var startOffset=(firstDay===0)?6:firstDay-1;
+
+for(let e=0;e<startOffset;e++){
+let empty=document.createElement('div');
+empty.className='cal-day';
+grid.appendChild(empty);
+}
 
 for(let d=1;d<=days;d++){
 
@@ -760,17 +794,28 @@ let date=new Date(state.year,state.month,d);
 
 let cell=document.createElement('div');
 
-cell.className='cal-day';
+let today=new Date();
+today.setHours(0,0,0,0);
+
+let isPast = date < today;
+let isAvailable = availableDays.indexOf(date.getDay())!==-1 && !isPast;
+
+cell.className='cal-day' + (isAvailable ? ' avail' : '');
+if(date.getTime()===today.getTime()) cell.classList.add('today');
+if(state.day===d) cell.classList.add('selected');
 
 cell.textContent=d;
 
 
+if(isAvailable){
+cell.setAttribute('tabindex','0');
+cell.setAttribute('role','button');
 cell.onclick=function(){
 
 selectDay(this,d,date);
 
 };
-
+}
 
 grid.appendChild(cell);
 
@@ -794,7 +839,12 @@ state.month=11;
 state.year--;
 }
 
+state.day='';
+state.time='';
+document.getElementById('btn-step2').disabled=true;
+
 renderCalendar();
+renderSlots();
 
 }
 
@@ -811,11 +861,15 @@ el.classList.add('selected');
 
 state.day=day;
 
+var dayNames=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 state.dayLabel=
-day+' '+monthNames[state.month]+' '+state.year;
+dayNames[date.getDay()]+' '+day+' '+monthNames[state.month]+' '+state.year;
 
+state.time='';
+document.getElementById('btn-step2').disabled=true;
 
 renderSlots();
+updateConfirmCard();
 
 }
 
@@ -823,6 +877,15 @@ renderSlots();
 function renderSlots(){
 
 var container=document.getElementById('slots-list');
+var title=document.getElementById('slots-title');
+
+if(!state.day){
+if(title) title.textContent='Selecciona un día';
+container.innerHTML='<p style="font-size:13px;color:var(--dim-3);text-align:center;margin-top:32px;line-height:1.7;">Elige una fecha disponible</p>';
+return;
+}
+
+if(title) title.textContent=state.dayLabel;
 
 container.innerHTML='';
 
@@ -831,9 +894,9 @@ availableSlots.forEach(function(slot){
 
 let btn=document.createElement('button');
 
-btn.className='time-slot-btn';
+btn.className='time-slot-btn' + (slot===state.time ? ' selected' : '');
 
-btn.textContent=slot;
+btn.innerHTML=slot+'<span class="avail-lbl">Libre</span>';
 
 btn.onclick=function(){
 
@@ -881,6 +944,29 @@ if(d)d.textContent=state.dayLabel||'—';
 
 let t=document.getElementById('cv-time');
 if(t)t.textContent=state.time||'—';
+
+let du=document.getElementById('cv-dur');
+if(du)du.textContent=state.dur ? state.dur+' minutos' : '—';
+
+let lo=document.getElementById('cv-loc');
+if(lo){
+let isPresencial=state.mod && state.mod.toLowerCase().indexOf('presencial')!==-1;
+lo.textContent = isPresencial
+? 'Calle 80 #47-43 Piso 2, Consultorio 4A · Barranquilla'
+: 'Videollamada · Enlace enviado por WhatsApp';
+}
+
+let waBtn=document.getElementById('btn-wa-confirm');
+if(waBtn){
+let msg='Hola Rubén, quisiera confirmar mi cita:\n'
++'• Servicio: '+(state.service||'—')+'\n'
++'• Modalidad: '+(state.mod||'—')+'\n'
++'• Fecha: '+(state.dayLabel||'—')+'\n'
++'• Hora: '+(state.time||'—');
+waBtn.onclick=function(){
+window.open('https://wa.me/573148574637?text='+encodeURIComponent(msg),'_blank');
+};
+}
 
 }
 

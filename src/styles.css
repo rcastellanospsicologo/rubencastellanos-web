@@ -2494,3 +2494,42 @@ footer {
 .patient-info .pnm { font-size: 13px; color: var(--ink); }
 .patient-info .psvc { font-size: 11px; color: var(--dim-3); margin-top: 2px; }
 
+:root {
+  --ivory:       #F6F2EE; /* Fondo principal */
+  --ivory-2:     #EDE8E2;
+  --espresso:    #77726E; /* Acento café */
+  --deep-blue:   #323841; /* Azul desaturado */
+  --terracotta:  #9E7B6A;
+  --ink:         #1E1B18; /* Texto principal */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+:root {
+  --ivory:       #F6F2EE; /* Fondo principal */
+  --ivory-2:     #EDE8E2;
+  --espresso:    #77726E; /* Acento café */
+  --deep-blue:   #323841; /* Azul desaturado */
+  --terracotta:  #9E7B6A;
+  --ink:         #1E1B18; /* Texto principal */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
